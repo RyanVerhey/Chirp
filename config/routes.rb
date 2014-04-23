@@ -8,7 +8,7 @@ get '/sessions/logout' => 'sessions#logout'
 
 get '/users/login' => 'users#login'
 
-resources :sessions, only: 'new'
+resources :sessions, only: 'create'
 resources :users
 
 end
