@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @reviews = Review.order(stars: :desc)
+  end
+
   def new
     @review = Review.new
   end
