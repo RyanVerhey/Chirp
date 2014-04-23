@@ -22,6 +22,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.where(id: params[:id]).first
+  end
+
+  def index
+    if logged_in?
+      @user = current_user
+      render 'users/show'
+    else
+      redirect_to users_login_path
+    end
+  end
+
   private
 
   def user_params
