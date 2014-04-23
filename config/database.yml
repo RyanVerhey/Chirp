@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: Chirp_production
-  username: Chirp
-  password: <%= ENV['CHIRP_DATABASE_PASSWORD'] %>
+  username: 
+  password: 
