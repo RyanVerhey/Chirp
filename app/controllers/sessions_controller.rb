@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
-  def login
+  def new
     @user = User.where(email: user_params[:email]).first
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       redirect_to :back
     else
-      redirect_to login_path # This should be changed to whatever the login route is
+      redirect_to controller: 'Users', action: 'login' # This should be changed to whatever the login route is
     end
   end
 
