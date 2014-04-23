@@ -1,4 +1,4 @@
 class Restaurant < ActiveRecord::Base
   has_many :reviews
-  belongs_to :owner, class_name "User"
+  belongs_to :owner, class_name: "User"
 end
