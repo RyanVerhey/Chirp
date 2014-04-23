@@ -11,4 +11,5 @@ get '/users/login' => 'users#login'
 resources :sessions, only: 'create'
 resources :users
 
+resources :restaurants
 end
