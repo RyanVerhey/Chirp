@@ -1,3 +1,7 @@
+<% if flash[:error] %>
+  <span style="color:red;"><%= flash[:error] %></span>
+<% end %>
+
 <%= field_set_tag 'Log in' do %>
   <%= form_for @user, url: sessions_path, method: :post do |f| %>
     <%= f.text_field :email, placeholder: "Email" %><br>
