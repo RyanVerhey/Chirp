@@ -9,13 +9,17 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # puts params # "review"=>{"stars"=>"3", "content"=>"test"}
-    Review.new(review_params)
+    review = Review.new(review_params)
+    if review.save
+      redirect_to restaurant_path(review.restaurant)
+    else
+      render :new
+    end
   end
 
 
   private
   def review_params
-    params.require(:review).permit(:stars, :content)
+    params.require(:review).permit(:stars, :content, :restaurant_id, :reviewer_id)
   end
 end
