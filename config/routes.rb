@@ -17,4 +17,8 @@ resources :restaurants do
   resources :photos, only: :create
 end
 
+# Tags
+
+post '/tags/tag-restaurant' => 'tags#tag_restaurant'
+
 end

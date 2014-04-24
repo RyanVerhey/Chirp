@@ -10,6 +10,181 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require normalize-rails
+ *= require_tree .
  */
+
+/* nav */
+
+* {
+  font-family: 'Oxygen', 'sans-serif';
+}
+
+body {
+  padding-top: 65px;
+  }
+
+header {
+  background-color: #222222;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  border-top: solid 5px #82b647;
+}
+
+.brand {
+  float: left;
+  margin-left: 20px;
+  margin-top: 9px;
+}
+
+.brand a:link{
+  text-decoration: none;
+  color: #82b647;
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.brand a:visited {
+  color: #82b647;
+}
+
+.navbar {
+  float: right;
+  list-style: none;
+  margin-right: 10px;
+}
+
+.navbar li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navbar a:link {
+  text-decoration: none;
+  color: #82b647;
+  font-size: 1.3em;
+}
+
+.navbar a:visited {
+  color: #82b647;
+}
+
+/* restaurants index */
+
+.heading {
+  width: 100%;
+  border-bottom: solid 1px #333333;
+}
+
+.restaurants {
+  display: block;
+  margin-left: 40px;
+  color: #222222;
+  width: 50%
+}
+
+.restaurants ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.restaurant-name a{
+  text-decoration: none;
+  font-size: 1.3em;
+  color: #222222;
+}
+
+.restaurant-name a{
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.restaurant-name a:hover {
+  color: #4acad9;
+}
+.description {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.rating {
+  float: right;
+  color: #f56526;
+}
+
+/* show */
+
+.heading-show {
+  width: 100%;
+  border-bottom: solid 1px #333333;
+  padding-left: 15px;
+}
+
+.map {
+  /*placeholder*/
+  display: inline-block;
+  width: 30%;
+  height: 300px;
+  background-color: gray;
+  margin-left: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.photo {
+  display: inline-block;
+  width: 60%;
+  height: 300px;
+  margin-left: 5px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: gray;
+}
+
+.info {
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.reviews {
+  width: 50%;
+  margin-left: 20px;
+}
+
+.reviews ul{
+  list-style: none;
+}
+
+.review-list li{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

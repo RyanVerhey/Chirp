@@ -6,6 +6,14 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @tags = @restaurant.tags.inject([]) { |arr,tag| arr << tag.name }
+    @tags = @tags.join(", ")
+    @tag_list = [] #Tag.all.inject([]) { |arr,tag| (arr << tag) if (!@restaurant.tags.include?(tag)) }
+    Tag.all.each do |tag|
+      if !@restaurant.tags.include?(tag)
+        @tag_list << tag
+      end
+    end
   end
 
   def new

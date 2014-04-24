@@ -1,4 +1,13 @@
-<h1><%= @restaurant.name %></h1>
+<div class="heading-show"><h1><%= @restaurant.name %></h1>
+  <%= @restaurant.description %>
+  <h4><%= @tags %></h4>
+  <div class="info">
+    <%= @restaurant.street_address %>
+    <br>
+    <%= @restaurant.city_state %>
+    <%= @restaurant.zip_code %>
+  </div>
+</div>
 <div class="map"></div>
 <div class="photo">
   <% if @restaurant.photos.any? %>
@@ -7,30 +16,37 @@
     <% end %>
   <% end %>
 </div>
-<div class="info">
-  <%= @restaurant.description %>
-  <br>
-  <%= @restaurant.street_address %>
-  <br>
-  <%= @restaurant.city_state %>
-  <%= @restaurant.zip_code %>
-</div>
-<%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
-<div class="reviews">
-
-<%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
+<div class="upload">
+  <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
   <p>
     <label>Upload Pictures of Your Food Adventures!</label>
     <%= f.file_field :food_image %>
     <%= f.submit %>
   </p>
-<% end %>
-
-  <ul>
-  <% @restaurant.reviews.each do |review| %>
-  <li><%= review.content %></li>
-  <li>by: <%= review.reviewer.username %></li>
   <% end %>
+</div>
+  
+<div class="tags"> 
+  <% if !!session[:user_id] %>
+    <%= form_tag('/tags/tag-restaurant', method: :post) do %>
+      <%= hidden_field(:restaurant, :id) %>
+      <%= select_tag "tag", options_from_collection_for_select(@tag_list, "id", "name") %>
+      <%= submit_tag "Tag!" %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="reviews">
+  <div class="heading-show">
+    <h2>Reviews</h2>
+    <br>
+    <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
+  </div>
+  <ul class="review-list">
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %> <br><%= review.stars %> Grasshoppers!</li>
+      <li>by: <%= review.reviewer.username %></li>
+      <% end %>
   </ul>
 
 </div>
