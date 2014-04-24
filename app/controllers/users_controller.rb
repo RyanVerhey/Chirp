@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      flash[:error] = "Something went wrong with creating your account. Please verify your information and try again."
       redirect_to new_user_path
     end
   end
