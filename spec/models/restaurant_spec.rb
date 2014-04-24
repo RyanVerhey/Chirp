@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Restaurant do
-
+  # CODE REVIEW: check out shoulda-matchers
   it "has a valid factory" do
     FactoryGirl.create(:restaurant).should be_valid
   end

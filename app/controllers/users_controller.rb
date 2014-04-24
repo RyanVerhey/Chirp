@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    # CODE REVIEW: U NO LIKE MASS ASSIGNMENT?
     @user = User.new(first_name: user_params[:first_name],
                      last_name: user_params[:last_name],
                      username: user_params[:username],

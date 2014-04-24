@@ -24,6 +24,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params 
+    # CODE REVIEW: Not sure you want :owner to be mass-assignable...
     params.require(:restaurant).permit(:name, :owner, :description, :street_address, :city_state, :zip_code)
   end
 end
