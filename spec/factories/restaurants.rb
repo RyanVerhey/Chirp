@@ -1,7 +1,6 @@
 require 'faker'
 
 FactoryGirl.define do
-
   factory :restaurant do |f|
     f.name { Faker::Company.name }
     # f.owner
