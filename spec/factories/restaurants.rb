@@ -1,14 +1,6 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :user do |f|
-    f.username { Faker::Name.first_name }
-    f.first_name { Faker::Name.first_name }
-    f.last_name { Faker::Name.last_name }
-    f.password_digest '123456'
-    f.email { Faker::Internet.email }
-  end
-
   factory :restaurant do |f|
     f.name { Faker::Company.name }
     # f.owner 
