@@ -1,10 +1,13 @@
-<h1>Chirp</h1>
-
-<% if @restaurants %>
-  <ul>
-    <% @restaurants.each do |restaurant| %>
-    <li><a href="restaurants/<%= restaurant.id %>"><%= restaurant.name %></a></li>
-    <% end %>
-  </ul>
-  
-<% end %>
+<div class="container">
+  <div class="restaurants">
+  <div class="heading"><h2>Restaurants in your area!</h2></div>
+  <% if @restaurants %>
+    <ul class="restaurant-list">
+      <% @restaurants.each do |restaurant| %>
+      <li class="restaurant-name"><a href="restaurants/<%= restaurant.id %>"><%= restaurant.name %></a> <span class="rating"> Average rating: <%= restaurant.reviews.sum(:stars)/restaurant.reviews.count %></span></li>
+      <li class="description"><%= restaurant.description %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  </div>
+</div>

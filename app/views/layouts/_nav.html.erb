@@ -1,6 +1,6 @@
 <header>
   <div class="brand"><%= link_to "Chirp", root_path %></div>
-  <ul class="navbar-left">
+  <ul class="navbar">
     <% if session[:user_id] %>
       <li class="nav"><%= link_to "Log out", sessions_logout_path %></li>
       <% else %>
