@@ -1,6 +1,12 @@
 <h1><%= @restaurant.name %></h1>
 <div class="map"></div>
-<div class="photo"></div>
+<div class="photo">
+  <% if @restaurant.photos.any? %>
+    <% @restaurant.photos.each do |photo| %>
+      <%= image_tag photo.food_image.to_s %>
+    <% end %>
+  <% end %>
+</div>
 <div class="info">
   <%= @restaurant.description %>
   <br>
@@ -11,6 +17,15 @@
 </div>
 <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
 <div class="reviews">
+
+<%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
+  <p>
+    <label>Upload Pictures of Your Food Adventures!</label>
+    <%= f.file_field :food_image %>
+    <%= f.submit %>
+  </p>
+<% end %>
+
   <ul>
   <% @restaurant.reviews.each do |review| %>
   <li><%= review.content %></li>

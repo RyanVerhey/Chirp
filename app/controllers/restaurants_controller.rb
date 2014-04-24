@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  
+
   def index
     @restaurants = Restaurant.all
   end
@@ -18,12 +18,12 @@ class RestaurantsController < ApplicationController
       redirect_to root_path
     else
       render :new
-    end   
+    end
   end
 
   private
 
-  def restaurant_params 
+  def restaurant_params
     params.require(:restaurant).permit(:name, :owner, :description, :street_address, :city_state, :zip_code)
   end
 end

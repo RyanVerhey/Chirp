@@ -14,6 +14,7 @@ resources :users
 
 resources :restaurants do
   resources :reviews, only: [:new, :create]
+  resources :photos, only: :create
 end
 
 end
