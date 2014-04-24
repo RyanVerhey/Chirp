@@ -1,21 +1,24 @@
-<h1><%= @restaurant.name %></h1>
+<div class="heading-show"><h1><%= @restaurant.name %></h1>
+<%= @restaurant.description %>
+  <div class="info">
+    <%= @restaurant.street_address %>
+    <br>
+    <%= @restaurant.city_state %>
+    <%= @restaurant.zip_code %>
+  </div>
+</div>
 <div class="map"></div>
 <div class="photo"></div>
-<div class="info">
-  <%= @restaurant.description %>
-  <br>
-  <%= @restaurant.street_address %>
-  <br>
-  <%= @restaurant.city_state %>
-  <%= @restaurant.zip_code %>
-</div>
-<%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
 <div class="reviews">
-  <ul>
-  <% @restaurant.reviews.each do |review| %>
-  <li><%= review.content %></li>
-  <li>by: <%= review.reviewer.username %></li>
-  <% end %>
+  <div class="heading-show">
+    <h2>Reviews</h2>
+    <br>
+    <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
+</div>
+  <ul class="review-list">
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %> <br><%= review.stars %> Grasshoppers!</li>
+      <li>by: <%= review.reviewer.username %></li>
+      <% end %>
   </ul>
-
 </div>
