@@ -22,8 +22,8 @@ require 'faker'
               email: email)
 end
 
-10.times do 
-  name = Faker::Company.name 
+10.times do
+  name = Faker::Company.name
   description = Faker::Lorem.sentence
   street_address = Faker::Address.street_address
   city_state = Faker::Address.state
@@ -41,7 +41,13 @@ end
   Restaurant.all.each do |restaurant|
     restaurant.reviews.create!(reviewer_id: 1,
                                 restaurant_id: restaurant.id,
-                                content: Faker::Lorem.sentence, 
+                                content: Faker::Lorem.sentence,
                                 stars: rand(1..5))
   end
-end 
+end
+
+# For seeding tags
+
+food_types = %w(Fast\ food Fast\ casual Casual\ dining Family\ style Fine\ dining Bistro Buffet Café Cafeteria Coffeehouse Tea\ house Destination\ restaurant Tabletop\ cooling Mongolian\ BBQ Pub Teppanyaki Concession\ stand Diner Drive\ thru Sandwiches Bakery Bar Cantina Delicatessen Dinner\ theater Drive-in Food\ truck Burgers Mexican Chinese Korean Ice\ cream Meadery Brewery Breakfast American Japanese Sushi Snacks Steakhouse Take-out African Asian Western\ European Eastern\ European Oceanian South\ American Fusion Vegan Vegetarian Arab Native\ American Comfort\ food Street\ food New\ American Slow\ Food Farmers\ Market).sort
+
+food_types.each { |food| Tag.create(name: food) }
