@@ -32,6 +32,8 @@ gem 'spring',        group: :development
 #for image uploads
 gem 'carrierwave'
 
+gem 'normalize-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

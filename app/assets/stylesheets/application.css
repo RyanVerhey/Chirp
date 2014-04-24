@@ -12,4 +12,21 @@
  *
  *= require_tree .
  *= require_self
+ *= require normalize-rails
  */
+
+/* nav */
+
+header {
+  background-color: #82b647;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  border-top: solid 10px #333333;
+}
+
+.brand a:link{
+  text-decoration: none;
+
+}
