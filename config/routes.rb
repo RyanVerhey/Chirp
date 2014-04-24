@@ -12,8 +12,8 @@ get '/users/login' => 'users#login'
 resources :sessions, only: 'create'
 resources :users
 
-resources :reviews, only: [:new, :create]
-
-resources :restaurants
+resources :restaurants do
+  resources :reviews, only: [:new, :create]
+end
 
 end
