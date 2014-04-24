@@ -16,4 +16,8 @@ resources :restaurants do
   resources :reviews, only: [:new, :create]
 end
 
+# Tags
+
+post '/tags/tag-restaurant' => 'tags#tag_restaurant'
+
 end
