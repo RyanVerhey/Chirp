@@ -1,6 +1,11 @@
 <div class="container">
   <div class="restaurants">
-  <div class="heading"><h2>Restaurants in your area!</h2></div>
+  <div class="heading">
+    <h2>Restaurants in your area!</h2>
+    <br>
+    <%= link_to "Add a new restaurant!", new_restaurant_path %>
+  </div>
+
   <% if @restaurants %>
     <ul class="restaurant-list">
       <% @restaurants.each do |restaurant| %>
