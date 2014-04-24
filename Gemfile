@@ -48,4 +48,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem "capybara", "~>2.1"
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
 end

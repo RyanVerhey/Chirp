@@ -17,21 +17,18 @@ describe Restaurant do
     restaurant.zip_code.should eq 60610
   end
 
-  it { should have_many :images }
+  it { should have_many(:photos) }
 
-  before(:each){
-      @user = FactoryGirl.create(:user)
-  }
+  describe "photos" do
 
-  describe "images" do
+      it "should have multiple photos" do
 
-      it "should have multiple images" do
+        restaurant = FactoryGirl.create(:restaurant)
+        restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
+        restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
+        restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
 
-          @user.images.create({document_file:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/image.png'))})
-          @user.images.create({document_file:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/image.png'))})
-
-
-          @user.images.length.should eq(3)
+        restaurant.photos.length.should eq(3)
       end
   end
 end
