@@ -12,10 +12,12 @@
   <%= @restaurant.zip_code %>
 </div>
 <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
-<%= form_tag('/tags/tag-restaurant', method: :post) do %>
-  <%= hidden_field(:restaurant, :id) %>
-  <%= select_tag "tag", options_from_collection_for_select(@tag_list, "id", "name") %>
-  <%= submit_tag "Tag!" %>
+<% if !!session[:user_id] %>
+  <%= form_tag('/tags/tag-restaurant', method: :post) do %>
+    <%= hidden_field(:restaurant, :id) %>
+    <%= select_tag "tag", options_from_collection_for_select(@tag_list, "id", "name") %>
+    <%= submit_tag "Tag!" %>
+  <% end %>
 <% end %>
 <div class="reviews">
   <ul>
