@@ -22,16 +22,18 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.owner = current_user if params[:restaurant][:owner] == "1"
     if @restaurant.save
       redirect_to root_path
     else
       render :new
     end
+    puts restaurant_params
   end
 
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :owner, :description, :street_address, :city_state, :zip_code)
+    params.require(:restaurant).permit(:name, :description, :street_address, :city_state, :zip_code)
   end
 end

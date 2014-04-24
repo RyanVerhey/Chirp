@@ -11,7 +11,7 @@
   <% if @restaurants %>
     <ul class="restaurant-list">
       <% @restaurants.each do |restaurant| %>
-      <li class="restaurant-name"><a href="restaurants/<%= restaurant.id %>"><%= restaurant.name %></a> <span class="rating"> Average rating: <%= restaurant.reviews.sum(:stars)/restaurant.reviews.count %></span></li>
+      <li class="restaurant-name"><a href="restaurants/<%= restaurant.id %>"><%= restaurant.name %></a> <span class="rating"> Average rating: <%= restaurant.reviews.count > 0 ? restaurant.reviews.sum(:stars)/restaurant.reviews.count : "No reviews" %></span></li>
       <li class="description"><%= restaurant.description %></li>
       <% end %>
     </ul>
