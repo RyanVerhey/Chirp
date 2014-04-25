@@ -1,0 +1,14 @@
+<div class="restaurants">
+  <h2>Restaurants with the '<%= @tag.name %>' tag:</h2>
+  <hr>
+  <% if !@tag.restaurants.empty? %>
+    <ul class="restaurant-list">
+      <% @tag.restaurants.each do |restaurant| %>
+      <li class="restaurant-name"><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a> <span class="rating"> Average rating: <%= restaurant.reviews.count > 0 ? restaurant.reviews.sum(:stars)/restaurant.reviews.count : "No reviews" %></span></li>
+      <li class="description"><%= restaurant.description %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h4>No restaurants have the '<%= @tag.name %>' tag.</h4>
+  <% end %>
+</div>
