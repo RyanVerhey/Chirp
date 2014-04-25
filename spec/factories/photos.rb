@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :photo do
-    photo Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png')))
+    food_image Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png')))
   end
 end

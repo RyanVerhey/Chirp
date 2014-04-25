@@ -5,5 +5,5 @@ class Review < ActiveRecord::Base
   validates_numericality_of :votes
 
   belongs_to :restaurant
-  belongs_to :reviewer
+  belongs_to :reviewer, class_name: "User"
 end
