@@ -26,14 +26,16 @@ end
   name = Faker::Company.name
   description = Faker::Lorem.sentence
   street_address = Faker::Address.street_address
-  city_state = Faker::Address.state
+  state = Faker::Address.state
+  city = Faker::Address.city
   zip_code = Faker::Address.zip
   user = User.all.first
   Restaurant.create!(name: name,
                       owner: user,
                       description: description,
                       street_address: street_address,
-                      city_state: city_state,
+                      state: state,
+                      city: city,
                       zip_code: zip_code)
 end
 
