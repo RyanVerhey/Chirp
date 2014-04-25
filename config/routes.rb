@@ -21,4 +21,7 @@ end
 
 post '/tags/tag-restaurant' => 'tags#tag_restaurant'
 
+#votes
+
+patch  '/reviews/:id' => 'reviews#vote'
 end

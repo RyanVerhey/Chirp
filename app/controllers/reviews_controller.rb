@@ -18,6 +18,11 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def vote
+    @review = Review.find(params[:id])
+    @review.votes += params[:vote]
+    @review.save
+  end
 
   private
   def review_params
