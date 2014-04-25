@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     [first_name, last_name].join(' ')
   end
 
-  # Setter
+  # Setter method to get the attributes
   def full_name=(name)
     split = name.split(' ', 2)
     self.first_name = split.first
