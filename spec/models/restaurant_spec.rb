@@ -44,18 +44,18 @@ describe Restaurant do
   it 'should have many categories' do
     should have_many(:categories)
   end
-  # it { should have_many(:photos) }
+  it { should have_many(:photos) }
 
-  # describe "photos" do
+  describe "photos" do
 
-  #     it "should have multiple photos" do
+      it "should have multiple photos" do
 
-  #       restaurant = FactoryGirl.create(:restaurant)
-  #       restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
-  #       restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
-  #       restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
+        restaurant = FactoryGirl.create(:restaurant)
+        restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
+        restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
+        restaurant.photos.create({food_image:File.open(File.join(Rails.root, '/spec/fixtures/foodimages/foodimage.png'))})
 
-  #       restaurant.photos.length.should eq(3)
-  #     end
-  # end
+        restaurant.photos.length.should eq(3)
+      end
+  end
 end
