@@ -10,6 +10,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def login
+    if logged_in?
+      redirect_to user_path(current_user)
+    else
+      @user = User.new
+    end
+  end
+
   def logout
     session.clear
     redirect_to root_path
