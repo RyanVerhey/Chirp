@@ -36,7 +36,23 @@ describe User do
   end
 
   it "should have a first_name column" do
+    should have_db_column(:first_name)
+  end
 
+  it "should have a last_name column" do
+    should have_db_column(:last_name)
+  end
+
+  it "should have a username column" do
+    should have_db_column(:username)
+  end
+
+  it "should have a email column" do
+    should have_db_column(:email)
+  end
+
+  it "should have a password_digest column" do
+    should have_db_column(:password_digest)
   end
 
 end
