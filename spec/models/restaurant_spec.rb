@@ -38,7 +38,12 @@ describe Restaurant do
     restaurant = FactoryGirl.build(:restaurant, zip_code: 60610)
     restaurant.zip_code.should eq 60610
   end
-
+  it 'should have many tags' do
+    should have_many(:tags)
+  end
+  it 'should have many categories' do
+    should have_many(:categories)
+  end
   # it { should have_many(:photos) }
 
   # describe "photos" do
