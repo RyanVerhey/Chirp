@@ -3,7 +3,7 @@
 class FoodImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  process :resize_to_fit => [200, 200]
+  process :resize_to_fit => [300, 300]
 
   storage :file
 
