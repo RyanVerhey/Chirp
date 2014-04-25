@@ -35,4 +35,8 @@ describe User do
     expect(FactoryGirl.build(:user, password: "bob").password_digest.length).to be > "bob".length
   end
 
+  it "should have a first_name column" do
+
+  end
+
 end
