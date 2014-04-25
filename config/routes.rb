@@ -7,7 +7,7 @@ root to: "restaurants#index"
 # post '/sessions/login' => 'sessions#login'
 get '/sessions/logout' => 'sessions#logout'
 
-get '/users/login' => 'users#login'
+get '/sessions/login' => 'sessions#login'
 
 resources :sessions, only: 'create'
 resources :users
