@@ -6,5 +6,6 @@ FactoryGirl.define do
     f.restaurant_id 1
     f.content { Faker::Lorem.sentence }
     f.stars { rand(1..5) }
+    f.votes -13
   end
 end
