@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140425145603) do
     t.integer  "stars"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "votes"
+    t.integer  "votes",         default: 0
   end
 
   create_table "tags", force: true do |t|
