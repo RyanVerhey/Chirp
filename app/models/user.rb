@@ -5,4 +5,15 @@ class User < ActiveRecord::Base
   has_many :restaurants, foreign_key: :owner_id
   has_many :reviews, foreign_key: :reviewer_id
   has_secure_password
+
+   def full_name
+    [first_name, last_name].join(' ')
+  end
+
+  # Setter
+  def full_name=(name)
+    split = name.split(' ', 2)
+    self.first_name = split.first
+    self.last_name = split.last
+  end
 end
