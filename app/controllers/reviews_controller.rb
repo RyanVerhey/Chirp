@@ -20,8 +20,9 @@ class ReviewsController < ApplicationController
 
   def vote
     @review = Review.find(params[:id])
-    @review.votes += params[:vote]
+    @review.votes += params[:vote].to_i
     @review.save
+    redirect_to :back
   end
 
   private
