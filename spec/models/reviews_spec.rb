@@ -8,9 +8,9 @@ describe Review  do
   end
 
   it { should belong_to(:reviewer).class_name('User')}
-  it { should validate_presence_of(:reviewer) }
+  it { should validate_presence_of(:reviewer_id) }
   it { should belong_to(:restaurant) }
-  it { should validate_presence_of(:restaurant) }
+  it { should validate_presence_of(:restaurant_id) }
 
   it { should validate_numericality_of(:stars).is_less_than_or_equal_to(5) }
   it { should validate_numericality_of(:votes) }
