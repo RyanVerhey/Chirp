@@ -35,8 +35,9 @@ gem "mini_magick"
 gem 'carrierwave'
 
 gem 'normalize-rails'
+gem 'geocoder'
 
-group :production do 
+group :production do
 # Use unicorn as the app server
   gem 'rails_12factor'
 end
