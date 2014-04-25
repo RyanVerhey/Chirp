@@ -5,4 +5,5 @@ class Restaurant < ActiveRecord::Base
   has_many :categories
   has_many :tags, through: :categories
   has_many :reviews
+  has_many :photos
 end
