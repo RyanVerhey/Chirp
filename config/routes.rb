@@ -20,6 +20,8 @@ end
 # Tags
 
 post '/tags/tag-restaurant' => 'tags#tag_restaurant'
+post '/tags' => 'tags#restaurants'
+resources :tags, only: :show
 
 #votes
 
