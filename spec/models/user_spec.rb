@@ -55,4 +55,12 @@ describe User do
     should have_db_column(:password_digest)
   end
 
+  it 'should have many reviews' do
+    should have_many(:reviews)
+  end
+
+  it 'should have many restaurants' do
+    should have_many(:restaurants)
+  end
+
 end
