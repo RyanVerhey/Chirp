@@ -23,14 +23,19 @@
   </div>
 </div>
 <div class="media">
-  <div class="map"></div>
+  <div id="map"></div>
   <div id="galleria">
     <% if @restaurant.photos.any? %>
       <% @restaurant.photos.each do |photo| %>
         <%= image_tag photo.food_image.to_s %>
       <% end %>
-    <% end %>
-  </div>
+<div class="upload">
+  <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
+    <label>Upload Pictures of Your Food Adventures!</label>
+    <%= f.file_field :food_image %>
+    <%= f.submit %>
+  <% end %>
+</div>
 </div>
 
 <div class="reviews">
@@ -68,3 +73,9 @@
   </ul>
 
 </div>
+
+<span id="lat" style="display:none;"><%= @restaurant.latitude %></span>
+<span id="lon" style="display:none;"><%= @restaurant.longitude %></span>
+<span id="name" style="display:none;"><%= @restaurant.name %></span>
+
+<script type="text/javascript">$(document).on("page:load", initMaps())</script>

@@ -35,7 +35,10 @@ gem 'spring',        group: :development
 gem "mini_magick"
 gem 'carrierwave'
 
-group :production do 
+gem 'normalize-rails'
+gem 'geocoder'
+
+group :production do
 # Use unicorn as the app server
   gem 'rails_12factor'
 end
