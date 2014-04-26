@@ -13,4 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require gallery/galleria
+//= require gallery/galleria/classic
 //= require_tree .
+var initGallery = function(){
+Galleria.loadAssetTheme('classic');
+Galleria.configure({
+    imageCrop: true,
+    transition: 'fade',
+    log: true,
+    // better handle image paths in assets folder!
+    // if pic can't be loaded use this one as fallback
+    dummy: '/assets/photos/dummy.png'});
+Galleria.run('#galleria');
+};
