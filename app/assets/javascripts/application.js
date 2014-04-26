@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// $(document).ready(function(){
+
+
+//   $('.button_to').on('ajax:success', function(){
+//     console.log(@review)
+//   });
+// });

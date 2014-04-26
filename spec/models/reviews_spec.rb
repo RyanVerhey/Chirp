@@ -19,4 +19,5 @@ describe Review  do
     review.content.should be_an_instance_of String
   end
 
+
 end
