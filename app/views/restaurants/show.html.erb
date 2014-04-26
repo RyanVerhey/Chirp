@@ -18,13 +18,8 @@
         <%= image_tag photo.food_image.to_s %>
       <% end %>
     <% end %>
-<div class="upload">
-  <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
-    <label>Upload Pictures of Your Food Adventures!</label>
-    <%= f.file_field :food_image %>
-    <%= f.submit %>
-  <% end %>
-</div>
+
+  </div>
 </div>
 
 <div class="reviews">
@@ -32,7 +27,9 @@
   <div class="heading-show">
     <h2>Reviews</h2>
     <br>
-    <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
+    <% if !!session[:user_id] %>
+      <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
+    <% end %>
   <span class="tags">
     <% if !!session[:user_id] %>
       <%= form_tag('/tags/tag-restaurant', method: :post) do %>
@@ -43,9 +40,13 @@
     <% end %>
   </span>
   <span class="upload">
-    <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
-      <label>Upload Pictures of Your Food Adventures!</label>
-      <%= f.file_field :food_image %><%= f.submit %>
+    <% if !!session[:user_id] %>
+      <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
+        <label>Upload Pictures of Your Food Adventures!</label>
+        <%= f.file_field :food_image %><%= f.submit %>
+      <% end %>
+    <% else %>
+      <p>Please <%= link_to "login", sessions_login_path  %> or <%= link_to "signup", new_user_path %> to upload a picture of this restaurant</p>
     <% end %>
   </span>
   </div>
