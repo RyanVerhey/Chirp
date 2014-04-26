@@ -22,7 +22,10 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.votes += params[:vote].to_i
     @review.save
-    redirect_to :back
+    respond_to do |format|
+      format.js{}
+      format.json{ render :json => @review }
+    end
   end
 
   private

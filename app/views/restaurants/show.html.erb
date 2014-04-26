@@ -44,11 +44,13 @@
   </div>
   <ul class="review-list">
     <% @restaurant.reviews.each do |review| %>
-      <li><%= button_to "Upvote", {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :patch %></li>
-      <li><%= review.votes %></li>
-      <li><%= button_to "Downvote", {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :patch %></li>
-      <li><%= review.content %> <br><%= review.stars %> Grasshoppers!</li>
-      <li>by: <%= review.reviewer.username %></li>
+      <!-- <div id='<%=review.id%>-vote-box'> -->
+        <li><%= button_to "Upvote", {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn"%></li>
+        <li id="<%=review.id%>-vote"><%= review.votes %></li>
+        <li><%= button_to "Downvote", {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn"%></li>
+        <li><%= review.content %> <br><%= review.stars %> Grasshoppers!</li>
+        <li>by: <%= review.reviewer.username %></li>
+      <!-- </div> -->
       <% end %>
   </ul>
 
