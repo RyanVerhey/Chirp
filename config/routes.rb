@@ -25,5 +25,5 @@ resources :tags, only: :show
 
 #votes
 
-patch  '/reviews/:id' => 'reviews#vote'
+post  '/reviews/:id' => 'reviews#vote'
 end

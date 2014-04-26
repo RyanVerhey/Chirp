@@ -16,3 +16,4 @@
 //= require gallery/galleria
 //= require gallery/galleria/classic
 //= require_tree .
+
