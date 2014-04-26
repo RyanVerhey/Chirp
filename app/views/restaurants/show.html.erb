@@ -1,16 +1,4 @@
-<script>
-  gallery = function(){
-  Galleria.loadAssetTheme('classic');
-  Galleria.configure({
-      imageCrop: true,
-      transition: 'fade',
-      log: true,
-      // better handle image paths in assets folder!
-      // if pic can't be loaded use this one as fallback
-      dummy: '/assets/photos/dummy.png'});
-  Galleria.run('#galleria');
-  };
-</script>
+
 <div class="heading-show">
   <h1 class="restaurant-name"><%= @restaurant.name %></h1>
   <%= @restaurant.description %>
@@ -29,6 +17,7 @@
       <% @restaurant.photos.each do |photo| %>
         <%= image_tag photo.food_image.to_s %>
       <% end %>
+    <% end %>
 <div class="upload">
   <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
     <label>Upload Pictures of Your Food Adventures!</label>
@@ -55,10 +44,8 @@
   </span>
   <span class="upload">
     <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
-    <p>
       <label>Upload Pictures of Your Food Adventures!</label>
       <%= f.file_field :food_image %><%= f.submit %>
-    </p>
     <% end %>
   </span>
   </div>
@@ -78,4 +65,4 @@
 <span id="lon" style="display:none;"><%= @restaurant.longitude %></span>
 <span id="name" style="display:none;"><%= @restaurant.name %></span>
 
-<script type="text/javascript">$(document).on("page:load", initMaps())</script>
+<script type="text/javascript">$(document).on("page:load", initMaps(), initGallery())</script>

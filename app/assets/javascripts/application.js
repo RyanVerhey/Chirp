@@ -16,6 +16,7 @@
 //= require gallery/galleria
 //= require gallery/galleria/classic
 //= require_tree .
+var initGallery = function(){
 Galleria.loadAssetTheme('classic');
 Galleria.configure({
     imageCrop: true,
@@ -25,3 +26,4 @@ Galleria.configure({
     // if pic can't be loaded use this one as fallback
     dummy: '/assets/photos/dummy.png'});
 Galleria.run('#galleria');
+};
