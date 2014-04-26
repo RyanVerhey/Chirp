@@ -6,6 +6,6 @@ Galleria.configure({
     log: true,
     // better handle image paths in assets folder!
     // if pic can't be loaded use this one as fallback
-    dummy: 'app/assets/images/bg1.jpg'});
+    });
 Galleria.run('#galleria');
 };

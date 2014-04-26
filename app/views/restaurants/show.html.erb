@@ -1,7 +1,12 @@
-
+<script>
+  $('#galleria').galleria({
+    height: 400,
+    width: 700
+  });
+</script>
 <div class="heading-show">
   <h1 class="restaurant-name"><%= @restaurant.name %></h1>
-  <%= @restaurant.description %>
+  <p><%= @restaurant.description %></p>
   <h4><%= @tags %></h4>
   <div class="info">
     <%= @restaurant.street_address %>
@@ -12,11 +17,13 @@
 </div>
 <div class="media">
   <div id="map"></div>
-  <div id="galleria">
+  <div id="galleria" class="gallery">
     <% if @restaurant.photos.any? %>
       <% @restaurant.photos.each do |photo| %>
         <%= image_tag photo.food_image.to_s %>
       <% end %>
+      <% else %>
+        <%= image_tag('http://lorempixel.com/640/400/food') %>
     <% end %>
 <div class="upload">
   <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
@@ -29,36 +36,41 @@
 
 <div class="reviews">
 
-  <div class="heading-show">
-    <h2>Reviews</h2>
+  <div class="review-heading">
+    <span class="section-heading">Reviews</span>
     <br>
     <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
-  <span class="tags">
-    <% if !!session[:user_id] %>
-      <%= form_tag('/tags/tag-restaurant', method: :post) do %>
-        <%= hidden_field(:restaurant, :id) %>
-        <%= select_tag "tag", options_from_collection_for_select(@tag_list, "id", "name") %>
-        <%= submit_tag "Tag!" %>
+    <div class="tags">
+      <% if !!session[:user_id] %>
+        <%= form_tag('/tags/tag-restaurant', method: :post) do %>
+          <%= hidden_field(:restaurant, :id) %>
+          <%= select_tag "tag", options_from_collection_for_select(@tag_list, "id", "name") %>
+          <%= submit_tag "Tag!" %>
+        <% end %>
       <% end %>
-    <% end %>
-  </span>
-  <span class="upload">
-    <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
-      <label>Upload Pictures of Your Food Adventures!</label>
-      <%= f.file_field :food_image %><%= f.submit %>
-    <% end %>
-  </span>
+    </div>
+    <div class="upload">
+      <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
+        <label>Upload Pictures of Your Food Adventures!</label>
+        <br>
+        <%= f.file_field :food_image %><%= f.submit %>
+      <% end %>
+    </div>
   </div>
-  <ul class="review-list">
+  
     <% @restaurant.reviews.each do |review| %>
-      <li><%= button_to "Upvote", {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :patch %></li>
-      <li><%= review.votes %></li>
-      <li><%= button_to "Downvote", {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :patch %></li>
-      <li><%= review.content %> <br><%= review.stars %> Grasshoppers!</li>
-      <li>by: <%= review.reviewer.username %></li>
-      <% end %>
-  </ul>
+    <div class="review-card">
+      <div class="reviewer">
+        <%= review.reviewer.username %>
+      </div>
 
+      <%= review.content %> <br><%= review.stars %> Grasshoppers!  
+      by:   
+      <%= review.votes %>
+      <%= link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :patch %>
+      <%= link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :patch %>
+    <% end %>
+    </div>
 </div>
 
 <span id="lat" style="display:none;"><%= @restaurant.latitude %></span>
