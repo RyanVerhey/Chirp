@@ -125,11 +125,11 @@ header {
   padding-left: 15px;
 }
 
-.map {
+#map {
   /*placeholder*/
+  height: 300px;
   display: inline-block;
   width: 30%;
-  height: 300px;
   background-color: gray;
   margin-left: 15px;
   margin-right: 10px;

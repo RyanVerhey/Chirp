@@ -8,7 +8,7 @@
     <%= @restaurant.zip_code %>
   </div>
 </div>
-<div class="map"></div>
+<div id="map"></div>
 <div class="photo">
   <% if @restaurant.photos.any? %>
     <% @restaurant.photos.each do |photo| %>
@@ -53,3 +53,9 @@
   </ul>
 
 </div>
+
+<span id="lat" style="display:none;"><%= @restaurant.latitude %></span>
+<span id="lon" style="display:none;"><%= @restaurant.longitude %></span>
+<span id="name" style="display:none;"><%= @restaurant.name %></span>
+
+<script type="text/javascript">$(document).on("page:load", initMaps())</script>
