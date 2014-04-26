@@ -13,7 +13,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-
+gem 'normalize-rails'
+gem 'rails-gallery'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -35,8 +36,9 @@ gem "mini_magick"
 gem 'carrierwave'
 
 gem 'normalize-rails'
+gem 'geocoder'
 
-group :production do 
+group :production do
 # Use unicorn as the app server
   gem 'rails_12factor'
 end
