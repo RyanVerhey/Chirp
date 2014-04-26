@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def restaurants
-    redirect_to tag_path(Restaurant.find(params[:tag][:id]))
+    redirect_to tag_path(Tag.find(params[:tag][:id]))
   end
 
   def tag_restaurant
