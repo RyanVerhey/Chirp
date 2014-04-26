@@ -35,6 +35,7 @@ gem 'spring',        group: :development
 gem "mini_magick"
 gem 'carrierwave'
 
+gem 'font-awesome-rails'
 gem 'normalize-rails'
 gem 'geocoder'
 
