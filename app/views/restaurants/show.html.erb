@@ -25,13 +25,8 @@
       <% else %>
         <%= image_tag('http://lorempixel.com/640/400/food') %>
     <% end %>
-<div class="upload">
-  <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
-    <label>Upload Pictures of Your Food Adventures!</label>
-    <%= f.file_field :food_image %>
-    <%= f.submit %>
-  <% end %>
-</div>
+
+  </div>
 </div>
 
 <div class="reviews">
@@ -39,7 +34,9 @@
   <div class="review-heading">
     <span class="section-heading">Reviews</span>
     <br>
-    <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
+    <% if !!session[:user_id] %>
+      <%= link_to "Write a Review", new_restaurant_review_path(:restaurant_id => @restaurant.id) %>
+    <% end %>
     <div class="tags">
       <% if !!session[:user_id] %>
         <%= form_tag('/tags/tag-restaurant', method: :post) do %>
@@ -50,24 +47,33 @@
       <% end %>
     </div>
     <div class="upload">
-      <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
-        <label>Upload Pictures of Your Food Adventures!</label>
-        <br>
-        <%= f.file_field :food_image %><%= f.submit %>
+      <% if !!session[:user_id] %>
+        <%= form_for [@restaurant, Photo.new], :html => {:multipart => true} do |f| %>
+          <label>Upload Pictures of Your Food Adventures!</label>
+          <%= f.file_field :food_image %><%= f.submit %>
+        <% end %>
+      <% else %>
+        <p>Please <%= link_to "login", sessions_login_path  %> or <%= link_to "signup", new_user_path %> to upload a picture of this restaurant</p>
       <% end %>
     </div>
   </div>
-  
+
     <% @restaurant.reviews.each do |review| %>
     <div class="review-card">
       <div class="reviewer">
         <%= review.reviewer.username %>
       </div>
-      <%= review.content %> <br><%= review.stars %> Grasshoppers!  
-      by:   
-      <span id="<%=review.id%>-vote"><%= review.votes %></span>
-      <%= link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn"%>   
-      <%= link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn"%> 
+      <%= review.content %> <br><%= review.stars %> Grasshoppers!
+      by:
+      <span id="<%=review.id%>-vote"><%= review.votes %>
+        <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-up"></i>'.html_safe, sessions_login_path) do |name|
+          link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn"
+        end%>
+
+      <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-down"></i>'.html_safe, sessions_login_path) do |name|
+          link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn"
+        end%>
+    </span>
     <% end %>
     </div>
 </div>
