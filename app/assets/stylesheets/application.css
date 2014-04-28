@@ -213,6 +213,22 @@ header {
   margin-top: 10px;
 }
 
+.review-card {
+  margin: 10px auto;
+  width: 90%;
+  background-color: #f0f0ee;
+  border-radius: 6px;
+}
+
+.reviewer {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.review-content {
+  display: inline-block;
+}
 
 
 

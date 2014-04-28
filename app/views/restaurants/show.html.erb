@@ -61,15 +61,20 @@
     <% @restaurant.reviews.each do |review| %>
     <div class="review-card">
       <div class="reviewer">
+        <%= image_tag "http://placehold.it/98x98" %> <br>
         <%= review.reviewer.username %>
       </div>
-      <%= review.content %> <br><%= review.stars %> Grasshoppers!  
-      by:   
+      <div class="review-content">
+      Score: <%= review.stars %> 
+      <p><%= review.content %></p> 
+      <%= link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn"%>
+      <br>
       <span id="<%=review.id%>-vote"><%= review.votes %></span>
-      <%= link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn"%>   
-      <%= link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn"%> 
-    <% end %>
+      <br>   
+      <%= link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn"%>
+      </div> 
     </div>
+    <% end %>
 </div>
 
 <span id="lat" style="display:none;"><%= @restaurant.latitude %></span>
