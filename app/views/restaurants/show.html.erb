@@ -76,11 +76,11 @@
         <br>
         Was this review helpful?
         <br>
-         
+         <span id="<%=review.id%>-vote">
           <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-up"></i>'.html_safe, sessions_login_path) do |name| %>
             <%= link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn" %>
           <% end %>
-        <span id="<%=review.id%>-vote"><%= review.votes %>
+        <%= review.votes %>
         <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-down"></i>'.html_safe, sessions_login_path) do |name| %>
            <%= link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn" %>
         <% end %>
