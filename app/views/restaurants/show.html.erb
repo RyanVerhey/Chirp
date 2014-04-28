@@ -6,8 +6,10 @@
 </script>
 <div class="heading-show">
   <h1 class="restaurant-name"><%= @restaurant.name %></h1>
-  <p><%= @restaurant.description %></p>
-  <h4><%= @tags %></h4>
+  <div class="attributes">
+    <p><%= @restaurant.description %></p>
+    <h4><%= @tags %></h4>
+  </div>
   <div class="info">
     <%= @restaurant.street_address %>
     <br>
@@ -66,19 +68,25 @@
       </div>
 
       <div class="review-content">
-      Score: <%= review.stars %> 
-      <p><%= review.content %></p> 
+        Score: <% review.stars.times do %> 
+            <i class="fa fa-bug"></i>
+            <% end %>
+        <p><%= review.content %></p> 
+       
+        <br>
+        Was this review helpful?
+        <br>
+         
+          <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-up"></i>'.html_safe, sessions_login_path) do |name| %>
+            <%= link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn" %>
+          <% end %>
+        <span id="<%=review.id%>-vote"><%= review.votes %>
+        <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-down"></i>'.html_safe, sessions_login_path) do |name| %>
+           <%= link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn" %>
+        <% end %>
+        
+        </span>
       </div>
-       <span id="<%=review.id%>-vote"><%= review.votes %>
-        <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-up"></i>'.html_safe, sessions_login_path) do |name|
-          link_to '<i class="fa fa-arrow-up"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: 1}, :method => :post, :remote => true, :class => "vote_btn"
-        end%>
-
-      <%= link_to_unless(logged_in?, '<i class="fa fa-arrow-down"></i>'.html_safe, sessions_login_path) do |name|
-          link_to '<i class="fa fa-arrow-down"></i>'.html_safe, {action: 'vote', :controller=>"reviews", id: review.id, vote: -1}, :method => :post, :remote => true, :class => "vote_btn"
-        end%>
-    </span>
-    <% end %> 
     </div>
     <% end %>
 </div>
