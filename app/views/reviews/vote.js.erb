@@ -1,1 +1,1 @@
-$("#<%=@review.id%>-vote").html("<%=escape_javascript @review.votes.to_s %> <i style='color:darkgrey;' class='fa fa-arrow-up'></i> <i style='color:darkgrey;' class='fa fa-arrow-down'></i>");
+$("#<%=@review.id%>-vote").html("<i style='color:darkgrey;' class='fa fa-arrow-up'></i> <%=escape_javascript @review.votes.to_s %> <i style='color:darkgrey;' class='fa fa-arrow-down'></i>");
