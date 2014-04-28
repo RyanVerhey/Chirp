@@ -39,7 +39,7 @@ end
 #                       zip_code: zip_code)
 # end
 
-food_types = %w(Fast\ food Fast\ casual Casual\ dining Family\ style Fine\ dining Bistro Buffet Café Cafeteria Coffeehouse Tea\ house Destination\ restaurant Tabletop\ cooling Mongolian\ BBQ Pub Teppanyaki Concession\ stand Diner Drive\ thru Sandwiches Bakery Bar Cantina Delicatessen Dinner\ theater Drive-in Food\ truck Burgers Mexican Chinese Korean Ice\ cream Meadery Brewery Breakfast American Japanese Sushi Snacks Steakhouse Take-out African Asian Western\ European Eastern\ European Oceanian South\ American Fusion Vegan Vegetarian Arab Native\ American Comfort\ food Street\ food New\ American Slow\ Food Farmers\ Market Lounge French Gastropub Brunch).sort
+food_types = %w(Fast\ food Fast\ casual Casual\ dining Family\ style Fine\ dining Bistro Buffet Café Cafeteria Coffeehouse Tea\ house Destination\ restaurant Tabletop\ cooking Mongolian\ BBQ Pub Teppanyaki Concession\ stand Diner Drive\ thru Sandwiches Bakery Bar Cantina Delicatessen Dinner\ theater Drive-in Food\ truck Burgers Mexican Chinese Korean Ice\ cream Meadery Brewery Breakfast American Japanese Sushi Snacks Steakhouse Take-out African Asian Western\ European Eastern\ European Oceanian South\ American Fusion Vegan Vegetarian Arab Native\ American Comfort\ food Street\ food New\ American Slow\ Food Farmers\ Market Lounge French Gastropub Brunch).sort
 
 food_types.each { |food| Tag.create(name: food) }
 
